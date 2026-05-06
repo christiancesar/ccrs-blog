@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "bradlc.vscode-tailwindcss",
+    "aaron-bond.better-comments",
+    "naumovs.color-highlight",
+    "joshbolduc.commitlint",
+    "WallabyJs.console-ninja",
+    "usernamehw.errorlens",
+    "meganrogge.template-string-converter"
+  ]
+}
