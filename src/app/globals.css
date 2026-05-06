@@ -130,3 +130,12 @@
     @apply font-sans;
     }
 }
+
+/* caret blinking for logo */
+.caret {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0 }
+}
