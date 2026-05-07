@@ -1,7 +1,7 @@
 "use client";
 
 import { AppRouterStructure } from "./app-router-structure";
-import { PagesRouterStructure } from "./page-router-structure";
+import { PagesRouterStructure } from "./pages-router-structure";
 
 export default function FileTree() {
 	return (
