@@ -1,0 +1,102 @@
+{
+	"project_structure": {
+		"description": "Estrutura de pastas e arquivos do Next.js App Router",
+		"root_files": {
+			"config_files": [
+				"package.json",
+				"next.config.js",
+				"tsconfig.json",
+				".env.local",
+				"README.md"
+			],
+			"purpose": "Configuração do projeto, dependências e variáveis de ambiente. Não fazem parte do roteamento."
+		},
+		"app_directory": {
+			"path": "/app",
+			"type": "root_layout_required",
+			"files": {
+				"layout.js": "Layout Raiz (compartilha UI global como HTML/Body)",
+				"page.js": "Página inicial (home) se existir na raiz",
+				"favicon.ico": "Ícone do site",
+				"globals.css": "Estilos globais"
+			},
+			"route_groups": {
+				"syntax": "(nome_do_grupo)",
+				"behavior": "Organiza arquivos sem afetar a URL. Útil para layouts diferentes ou agrupamento lógico.",
+				"examples": ["(marketing)", "(shop)", "(/dashboard)"]
+			},
+			"private_folders": {
+				"syntax": "_nome_da_pasta",
+				"behavior": "Pasta privada que não participa do roteamento. Útil para componentes ou utilitários específicos da rota se não estiverem no /src.",
+				"examples": ["_components", "_lib"]
+			},
+			"dynamic_routes": {
+				"single_param": {
+					"syntax": "[id]",
+					"example_path": "/app/blog/[id]/page.js",
+					"url_example": "/blog/123",
+					"prop_access": "params.id"
+				},
+				"catch_all": {
+					"syntax": "[...slug]",
+					"example_path": "/app/docs/[...slug]/page.js",
+					"url_example": "/docs/foo/bar/baz"
+				},
+				"optional_catch_all": {
+					"syntax": "[[...slug]]",
+					"example_path": "/app/shop/[[...slug]]/page.js",
+					"url_example": "/shop ou /shop/categoria/produto"
+				}
+			},
+			"routing_files": {
+				"page.js": "Define uma rota pública. Renderiza o conteúdo da página.",
+				"layout.js": "Envolve rotas filhas com UI compartilhada (headers, navs). Pode ser aninhado.",
+				"loading.js": "Componente de skeleton de carregamento para a rota e seus filhos.",
+				"error.js": "Componente de borda de erro (error boundary) para a rota e seus filhos.",
+				"not-found.js": "Componente para página 404 específica da rota.",
+				"route.js": "Define um endpoint de API (handler) para a rota.",
+				"metadata": {
+					"default_export": "Função para definir metadados estáticos",
+					"generateMetadata": "Função para gerar metadados dinâmicos"
+				},
+				"icons": {
+					"icon.js": "Gera ícone do site (favicon)",
+					"apple-icon.js": "Gera ícone para Apple devices"
+				}
+			},
+			"parallel_routes": {
+				"syntax": "@slot",
+				"behavior": "Renders named slots em um layout pai para UI complexa (ex: modais, dashboards com múltiplas áreas).",
+				"example": "@modal, @analytics"
+			},
+			"intercepted_routes": {
+				"syntax": "(.)",
+				"behavior": "Renderiza uma rota dentro do layout atual sem mudar a URL (ex: abrir um modal ao clicar em um item de lista).",
+				"example": "(.)photo/123"
+			},
+			"nested_structure_example": {
+				"path": "/app/(marketing)/blog/[slug]",
+				"components": {
+					"layout.js": "Layout do grupo (marketing) - Header/Footer específicos",
+					"page.js": "Página da lista de blog",
+					"loading.js": "Skeleton carregando a lista",
+					"error.js": "Erro ao carregar a lista",
+					"[slug]": {
+						"layout.js": "Layout específico para post individual (opcional)",
+						"page.js": "Conteúdo do post",
+						"not-found.js": "Post não encontrado"
+					}
+				}
+			},
+			"src_folder_support": {
+				"optional": true,
+				"path": "/src/app",
+				"benefit": "Separa código da aplicação da configuração na raiz do projeto."
+			}
+		},
+		"colocation_rules": {
+			"safe_files": "Arquivos de projeto (componentes, hooks, utils) podem ficar dentro de pastas de rota sem serem acessíveis via URL, desde que não sejam `page.js` ou `route.js`.",
+			"recommendation": "Use pastas de grupo `(nome)` ou pastas privadas `_nome` para organizar esses arquivos de colocation sem poluir o roteamento."
+		}
+	}
+}

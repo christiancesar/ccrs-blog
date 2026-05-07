@@ -1,5 +1,6 @@
 import { BlogCard } from "@/components/blog-card";
 import { Container } from "@/components/container";
+import FileTree from "@/components/file-tree";
 import { posts } from "@/data/posts";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
 						<BlogCard key={post.id} post={post} />
 					))}
 				</div>
+				<FileTree />
 			</Container>
 		</main>
 	);

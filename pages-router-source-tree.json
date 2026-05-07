@@ -1,0 +1,100 @@
+{
+	"project": "Next.js Pages Router",
+	"version": "16.2.5",
+	"structure": {
+		"top_level_folders": {
+			"pages": {
+				"description": "Root folder para rotas da aplicação. Cada arquivo aqui vira uma rota.",
+				"convention": "file_system_routing",
+				"files": [
+					{
+						"name": "index.js",
+						"route": "/",
+						"type": "static_route"
+					},
+					{
+						"name": "about.js",
+						"route": "/about",
+						"type": "static_route"
+					},
+					{
+						"name": "api",
+						"type": "folder",
+						"description": "API Routes",
+						"files": [
+							{
+								"name": "hello.js",
+								"route": "/api/hello",
+								"type": "api_endpoint"
+							}
+						]
+					},
+					{
+						"name": "[slug].js",
+						"route": "/[slug]",
+						"type": "dynamic_route",
+						"description": "Dynamic segment para rotas dinâmicas"
+					},
+					{
+						"name": "[...slug].js",
+						"route": "/[...slug]",
+						"type": "catch_all_route",
+						"description": "Catch-all segment para múltiplos segmentos"
+					}
+				],
+				"special_files": [
+					{
+						"name": "_app.js",
+						"purpose": "Customize all pages (e.g., adding <html>, <body>, context providers)"
+					},
+					{
+						"name": "_document.js",
+						"purpose": "Augment the document (e.g., add meta tags, scripts)"
+					},
+					{
+						"name": "_error.js",
+						"purpose": "Custom error page"
+					},
+					{
+						"name": "404.js",
+						"purpose": "Custom 404 page"
+					}
+				]
+			},
+			"public": {
+				"description": "Static assets (images, fonts, etc.) servidos na raiz (/)",
+				"files": ["favicon.ico", "logo.png"]
+			},
+			"styles": {
+				"description": "Arquivos de CSS global ou módulos (se organizados manualmente)",
+				"files": ["globals.css"]
+			}
+		},
+		"top_level_files": {
+			"description": "Arquivos de configuração e utilitários na raiz do projeto",
+			"files": [
+				{
+					"name": "package.json",
+					"purpose": "Gerenciar dependências e scripts"
+				},
+				{
+					"name": "next.config.js",
+					"purpose": "Configurar o Next.js (redirecionamentos, headers, etc.)"
+				},
+				{
+					"name": ".env.local",
+					"purpose": "Variáveis de ambiente locais"
+				},
+				{
+					"name": ".gitignore",
+					"purpose": "Arquivos a serem ignorados pelo git"
+				}
+			]
+		}
+	},
+	"routing_logic": {
+		"static": "Arquivos diretos em `pages` mapeiam para URLs idênticas.",
+		"dynamic": "Colchetes `[]` indicam parâmetros dinâmicos.",
+		"api": "Pasta `pages/api` trata requisições como endpoints de API."
+	}
+}
