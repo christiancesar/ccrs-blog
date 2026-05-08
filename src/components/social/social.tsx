@@ -18,8 +18,8 @@ export function Social() {
 		toast.success("Email copiado para a área de transferência!");
 	};
 	return (
-		<div className="flex flex-row gap-1">
-			<Button variant="secondary" onClick={handleCopyEmail}>
+		<div className="flex flex-row gap-1 ">
+			<Button variant="secondary" className="flex-1" onClick={handleCopyEmail}>
 				{copiedEmail ? <CheckIcon className="text-primary" /> : <AtSignIcon />}
 				christian.cesar@ccrs.dev
 			</Button>
