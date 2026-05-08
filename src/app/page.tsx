@@ -10,6 +10,7 @@ import { Linkedin } from "@/assets/icons/linkedin";
 import CCRSProfile from "@/assets/images/ccrs-profile.jpeg";
 import { Container } from "@/components/container";
 import { environment } from "@/components/environment-and-tools/environment";
+import { Social } from "@/components/social/social";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -58,35 +59,7 @@ export default function Home() {
 												Desenvolvedor Frontend | React, Next.js, Electron
 											</p>
 										</div>
-										<div className="flex flex-row gap-1">
-											<Button
-												variant="secondary"
-												size="icon"
-												// onClick={() =>
-												// 	navigator.clipboard.writeText(
-												// 		"christian.cesa@ccrs.dev",
-												// 	)
-												// }
-											>
-												<AtSignIcon />
-											</Button>
-											<Link
-												href="https://www.linkedin.com/in/christian-cesar"
-												target="_blank"
-											>
-												<Button variant="secondary" size="icon">
-													<Linkedin />
-												</Button>
-											</Link>
-											<Link
-												href="https://github.com/christiancesar"
-												target="_blank"
-											>
-												<Button variant="secondary" size="icon">
-													<SiGithub />
-												</Button>
-											</Link>
-										</div>
+										<Social />
 									</div>
 								</div>
 							</CardContent>

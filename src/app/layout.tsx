@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
+import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 
 const spaceGroteskHeading = Space_Grotesk({
@@ -40,8 +41,8 @@ export default function RootLayout({
 				<ThemeProvider>
 					<DynamicFavicon />
 					<Header />
-
 					{children}
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>
