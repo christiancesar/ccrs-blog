@@ -1,6 +1,4 @@
-export type FileTreeItem =
-	| { name: string; description?: string; items?: never }
-	| { name: string; description?: string; items: FileTreeItem[] };
+import { commonFiles, type FileTreeItem } from "./file-tree-types";
 
 export const appRouterTree: FileTreeItem[] = [
 	{
@@ -345,4 +343,6 @@ export const appRouterTree: FileTreeItem[] = [
 			},
 		],
 	},
+
+	...commonFiles,
 ];

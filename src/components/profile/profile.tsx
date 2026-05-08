@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CCRSProfile from "@/assets/images/ccrs-profile.jpeg";
 import { Social } from "@/components/social/social";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function Profile() {
 	return (

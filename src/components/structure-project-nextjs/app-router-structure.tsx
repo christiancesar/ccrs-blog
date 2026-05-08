@@ -15,7 +15,8 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { appRouterTree, type FileTreeItem } from "./app-router";
+import { appRouterTree } from "./app-router";
+import type { FileTreeItem } from "./file-tree-types";
 
 export function AppRouterStructure() {
 	const renderItem = (fileItem: FileTreeItem, key?: string) => {
@@ -24,7 +25,7 @@ export function AppRouterStructure() {
 
 		if (fileItem.items && fileItem.items.length > 0) {
 			return (
-				<Collapsible key={itemKey} open={true}>
+				<Collapsible key={itemKey}>
 					<TooltipProvider>
 						<Tooltip>
 							<CollapsibleTrigger asChild>
