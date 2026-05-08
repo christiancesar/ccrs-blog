@@ -1,9 +1,10 @@
-import { Geist, Geist_Mono, Raleway, Space_Grotesk } from "next/font/google";
+import { Geist_Mono, Raleway, Space_Grotesk } from "next/font/google";
 
-import "./globals.css";
 import DynamicFavicon from "@/components/dynamic-favicon";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
+
 import { cn } from "@/lib/utils";
 
 const spaceGroteskHeading = Space_Grotesk({
@@ -39,6 +40,7 @@ export default function RootLayout({
 				<ThemeProvider>
 					<DynamicFavicon />
 					<Header />
+
 					{children}
 				</ThemeProvider>
 			</body>

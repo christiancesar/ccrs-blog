@@ -1,11 +1,21 @@
 import {
+	Aws,
+	AwsAmazonCognito,
+	AwsAmazonEc2,
+	AwsAmazonRds,
+	AwsAmazonRoute53,
+	AwsAmazonS3OnOutposts,
+	AwsAwsLambda,
 	CodexOpenai,
 	Cursor,
+	Docker,
 	Electron,
 	Expo,
 	Express,
+	Fastapi,
 	Fastify,
 	GeminiCli,
+	Git,
 	GithubCopilot,
 	Linux,
 	Microsoft,
@@ -15,19 +25,24 @@ import {
 	Nextdotjs,
 	Nodedotjs,
 	Postgresql,
+	Prisma,
+	Pydantic,
 	Python,
 	React,
-	Spark,
+	Sqlalchemy,
+	Supabase,
 	Typescript,
+	Vercel,
 } from "@thesvg/react";
 import {
+	CloudIcon,
+	CloudUploadIcon,
 	CodeXmlIcon,
 	DatabaseIcon,
 	LayoutTemplateIcon,
 	MonitorCogIcon,
 	MonitorSmartphoneIcon,
 	ServerIcon,
-	SparkleIcon,
 	SparklesIcon,
 	TerminalIcon,
 } from "lucide-react";
@@ -73,7 +88,7 @@ export const environment: Environment[] = [
 	{
 		category: {
 			icon: TerminalIcon,
-			name: "Editor de Código",
+			name: "Editor de Código e Versionamento",
 			key: "code-editors",
 		},
 		items: [
@@ -86,6 +101,11 @@ export const environment: Environment[] = [
 				icon: Cursor,
 				key: "cursor",
 				name: "Cursor",
+			},
+			{
+				icon: Git,
+				key: "git",
+				name: "Git",
 			},
 		],
 	},
@@ -129,7 +149,7 @@ export const environment: Environment[] = [
 					{
 						icon: LayoutTemplateIcon,
 						key: "frontend",
-						name: "Desenvolvimento Frontend",
+						name: "Frontend",
 						subItems: [
 							{
 								icon: Nextdotjs,
@@ -154,7 +174,7 @@ export const environment: Environment[] = [
 					{
 						icon: MonitorSmartphoneIcon,
 						key: "cross-platform",
-						name: "Desenvolvimento Cross-Platform",
+						name: "Cross-Platform",
 						subItems: [
 							{
 								icon: Electron,
@@ -172,8 +192,8 @@ export const environment: Environment[] = [
 					},
 					{
 						icon: ServerIcon,
-						key: "nodejs",
-						name: "Node.js",
+						key: "javascript-backend",
+						name: "Backend",
 						level: "advanced",
 						subItems: [
 							{
@@ -207,8 +227,28 @@ export const environment: Environment[] = [
 			{
 				icon: Python,
 				key: "python",
-				name: "Python",
+				name: "Python (POO)",
 				level: "beginner",
+				subItems: [
+					{
+						icon: Fastapi,
+						key: "fastapi",
+						name: "FastAPI",
+						level: "beginner",
+					},
+					{
+						icon: Sqlalchemy,
+						key: "sqlalchemy",
+						name: "SQLAlchemy (ORM)",
+						level: "beginner",
+					},
+					{
+						icon: Pydantic,
+						key: "pydantic",
+						name: "Pydantic",
+						level: "beginner",
+					},
+				],
 			},
 		],
 	},
@@ -223,19 +263,124 @@ export const environment: Environment[] = [
 				icon: Postgresql,
 				key: "postgresql",
 				name: "PostgreSQL",
-				level: "intermediate",
+				level: "advanced",
 			},
 			{
 				icon: Mysql,
 				key: "mysql",
 				name: "MySQL",
-				level: "intermediate",
+				level: "advanced",
 			},
 			{
 				icon: Mongodb,
 				key: "mongodb",
 				name: "MongoDB",
-				level: "intermediate",
+				level: "advanced",
+			},
+		],
+	},
+	{
+		category: {
+			icon: CloudIcon,
+			name: "Infraestrutura",
+			key: "devops-infra",
+		},
+		items: [
+			{
+				icon: Docker,
+				key: "docker",
+				name: "Docker",
+				level: "advanced",
+			},
+			{
+				icon: Aws,
+				key: "aws",
+				name: "Amazon Web Services",
+				level: "advanced",
+				subItems: [
+					{
+						icon: AwsAwsLambda,
+						key: "aws-lambda",
+						name: "AWS Lambda",
+						level: "intermediate",
+					},
+					{
+						icon: AwsAmazonS3OnOutposts,
+						key: "aws-s3",
+						name: "AWS S3",
+						level: "advanced",
+					},
+					{
+						icon: AwsAmazonEc2,
+						key: "ec2",
+						name: "AWS EC2",
+						level: "advanced",
+					},
+					{
+						icon: AwsAmazonEc2,
+						key: "aws-load-balancer",
+						name: "AWS Load Balancer",
+						level: "advanced",
+					},
+					{
+						icon: AwsAmazonRoute53,
+						key: "aws-route53",
+						name: "AWS Route 53",
+						level: "advanced",
+					},
+					{
+						icon: AwsAmazonCognito,
+						key: "aws-cognito",
+						name: "AWS Cognito",
+						level: "advanced",
+					},
+					{
+						icon: AwsAmazonRds,
+						key: "aws-rds",
+						name: "AWS RDS",
+						level: "advanced",
+					},
+				],
+			},
+			{
+				icon: Supabase,
+				key: "supabase",
+				name: "Supabase",
+				level: "advanced",
+				subItems: [
+					{
+						icon: DatabaseIcon,
+						key: "supabase-db",
+						name: "Banco de Dados",
+						level: "advanced",
+					},
+					{
+						icon: CloudUploadIcon,
+						key: "supabase-storage",
+						name: "Armazenamento",
+						level: "advanced",
+					},
+				],
+			},
+			{
+				icon: Prisma,
+				key: "prisma",
+				name: "Prisma",
+				level: "advanced",
+				subItems: [
+					{
+						icon: DatabaseIcon,
+						key: "supabase-db",
+						name: "Banco de Dados",
+						level: "advanced",
+					},
+				],
+			},
+			{
+				icon: Vercel,
+				key: "vercel",
+				name: "Vercel",
+				level: "advanced",
 			},
 		],
 	},

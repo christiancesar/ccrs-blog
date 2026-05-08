@@ -1,10 +1,17 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { AtSignIcon, ChevronRightIcon, MailIcon } from "lucide-react";
+import {
+	AtSignIcon,
+	ChevronRightIcon,
+	CircleFadingArrowUpIcon,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Linkedin } from "@/assets/icons/linkedin";
 import CCRSProfile from "@/assets/images/ccrs-profile.jpeg";
 import { Container } from "@/components/container";
 import { environment } from "@/components/environment-and-tools/environment";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -14,6 +21,11 @@ import {
 	ItemMedia,
 	ItemTitle,
 } from "@/components/ui/item";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -21,6 +33,11 @@ export default function Home() {
 		<main className="min-h-screen bg-background py-12 sm:py-16 lg:py-20">
 			<Container>
 				<div className="flex flex-col gap-12">
+					<Alert className="border-none bg-blue-500/10 text-blue-500 dark:bg-blue-600/20">
+						<CircleFadingArrowUpIcon className="size-4" />
+						<AlertTitle>Página em construção</AlertTitle>
+					</Alert>
+
 					<div className="flex flex-row gap-4">
 						<Card className="flex-1">
 							<CardContent>
@@ -42,15 +59,33 @@ export default function Home() {
 											</p>
 										</div>
 										<div className="flex flex-row gap-1">
-											<Button variant="secondary" size="icon">
+											<Button
+												variant="secondary"
+												size="icon"
+												// onClick={() =>
+												// 	navigator.clipboard.writeText(
+												// 		"christian.cesa@ccrs.dev",
+												// 	)
+												// }
+											>
 												<AtSignIcon />
 											</Button>
-											<Button variant="secondary" size="icon">
-												<Linkedin color="#ffffff" />
-											</Button>
-											<Button variant="secondary" size="icon">
-												<SiGithub />
-											</Button>
+											<Link
+												href="https://www.linkedin.com/in/christian-cesar"
+												target="_blank"
+											>
+												<Button variant="secondary" size="icon">
+													<Linkedin />
+												</Button>
+											</Link>
+											<Link
+												href="https://github.com/christiancesar"
+												target="_blank"
+											>
+												<Button variant="secondary" size="icon">
+													<SiGithub />
+												</Button>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -101,14 +136,65 @@ export default function Home() {
 															{item.icon && <item.icon />}
 														</ItemMedia>
 														<ItemContent>
-															<ItemTitle>{item.name}</ItemTitle>
-															{/* <ItemDescription>
-																Learn how to get started with our components.
-															</ItemDescription> */}
+															<ItemTitle>
+																{item.name}{" "}
+																{item.level && (
+																	<Badge
+																		variant="outline"
+																		className={cn(
+																			item.level === "advanced" &&
+																				"bg-primary text-primary-foreground",
+																		)}
+																	>
+																		{item.level}
+																	</Badge>
+																)}
+															</ItemTitle>
 														</ItemContent>
 														{item.subItems && (
 															<ItemActions>
-																<ChevronRightIcon className="size-4" />
+																<Popover>
+																	<PopoverTrigger asChild>
+																		<Button variant="outline" size="icon">
+																			<ChevronRightIcon />
+																		</Button>
+																	</PopoverTrigger>
+																	<PopoverContent>
+																		<div className="flex flex-col gap-2">
+																			{item.subItems.map((subItem) => (
+																				<Item
+																					variant="outline"
+																					key={subItem.key}
+																					className={cn(
+																						subItem.subItems &&
+																							"cursor-pointer",
+																					)}
+																				>
+																					<ItemMedia variant="icon">
+																						{subItem.icon && <subItem.icon />}
+																					</ItemMedia>
+																					<ItemContent>
+																						<ItemTitle>
+																							{subItem.name}
+																							{""}
+																							{item.level && (
+																								<Badge
+																									variant="outline"
+																									className={cn(
+																										item.level === "advanced" &&
+																											"bg-primary text-primary-foreground",
+																									)}
+																								>
+																									{item.level}
+																								</Badge>
+																							)}
+																						</ItemTitle>
+																					</ItemContent>
+																				</Item>
+																			))}
+																		</div>
+																	</PopoverContent>
+																</Popover>
 															</ItemActions>
 														)}
 													</Item>
